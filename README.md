@@ -14,9 +14,11 @@ Code for the methods **FxDP**, **CorDP (Median or SampleWise)**, **IC-DP**, and 
 
 ## FxDP/CorDP/IC-DP
 
-**1. Insert** the class code from `fxdp.py`, `cordp.py`, and `ic_dp.py` into `cik_benchmark/baselines/direct_prompt.py` after the base `DirectPrompt` class. These classes expect `DirectPrompt` to define `forecast_loop(self, n_samples, messages, task_instance, batched_messages=False)` returning `(valid_forecasts, llm_outputs, discarded_outputs, total_tokens, total_client_time)`, and `self.tag`. If the CIK `DirectPrompt` does not provide these, add them so the interface matches.
+**1. Insert** the class code from `fxdp.py`, `cordp.py`, and `ic_dp.py` into `cik_benchmark/baselines/direct_prompt.py` after the base `DirectPrompt` class (since the code imports this class). 
 
-**2. Insert** the experiment functions from `run_baselines_snippet.py` into the CIK run script. Import `FxDP`, `CorDP`, `IC_DP` from `cik_benchmark.baselines.direct_prompt`, and ensure `evaluate_all_tasks`, `ChronosForecaster`, `lag_llama`, and `R_Arima` are available. Experiment names: `experiment_fxdp` (spec method `fxdp`), `experiment_cordp` (`cordp`), `experiment_ic_dp` (`ic_dp`).
+These classes expect `DirectPrompt` to define `forecast_loop(self, n_samples, messages, task_instance, batched_messages=False)` returning `(valid_forecasts, llm_outputs, discarded_outputs, total_tokens, total_client_time)`, and `self.tag`. If the CIK `DirectPrompt` does not provide these, **add them** so the interface matches.
+
+**2. Insert** the experiment functions from `run_baselines_snippet.py` into the CIK run script. Import `FxDP`, `CorDP`, `IC_DP` from `cik_benchmark.baselines.direct_prompt`.
 
 **3. Run** models using the CIK repo's instructions for running baselines.
 
