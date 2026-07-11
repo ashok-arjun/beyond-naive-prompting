@@ -1,0 +1,4 @@
+{Direct_Prompt_Prompt_of_CiK_Task}
+You are given a forecasting task with full contextual information.
+Please rate the task as easy or hard.
+Difficulty:
